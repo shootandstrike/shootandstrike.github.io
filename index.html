@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Shoot &amp; Strike — Hunting &amp; Fishing | South Africa</title>
+<meta name="description" content="Shoot &amp; Strike is a South African hunting and fishing outfitter. Rifles, ammunition, optics, fishing tackle, camo apparel and camping gear — everything for the field and the water." />
+<meta name="theme-color" content="#0d0f0e" />
+<meta property="og:title" content="Shoot &amp; Strike — Hunting &amp; Fishing" />
+<meta property="og:description" content="South Africa's outfitter for all your hunting and fishing needs." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="assets/logo.jpg" />
+<link rel="icon" type="image/jpeg" href="assets/logo.jpg" />
+<link rel="apple-touch-icon" href="assets/logo.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0d0f0e;
+    --bg-2:#14100d;
+    --panel:#181a17;
+    --panel-2:#1f221d;
+    --line:#2c2f29;
+    --text:#eef0ea;
+    --muted:#a2a89b;
+    --accent:#ff6a00;      /* blaze / hunter orange */
+    --accent-2:#c95400;
+    --camo:#3a4034;
+    --maxw:1160px;
+    --radius:14px;
+    --shadow:0 18px 40px rgba(0,0,0,.45);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.brandmark{font-family:'Oswald',Impact,sans-serif;letter-spacing:.5px;line-height:1.1}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+  .accent{color:var(--accent)}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(13,15,14,.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .logo{display:flex;align-items:center;gap:12px}
+  .logo img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--line)}
+  .logo .brandmark{font-size:20px;font-weight:700;text-transform:uppercase}
+  .logo .brandmark small{display:block;font-size:10px;letter-spacing:3px;color:var(--muted);font-family:'Inter',sans-serif;font-weight:600}
+  nav.links{display:flex;gap:28px;align-items:center}
+  nav.links a{color:var(--muted);font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;transition:color .2s}
+  nav.links a:hover{color:var(--text)}
+  .btn{
+    display:inline-block;background:var(--accent);color:#160b02;font-weight:700;
+    padding:11px 20px;border-radius:8px;font-size:14px;text-transform:uppercase;letter-spacing:.5px;
+    transition:transform .15s ease, background .2s;border:none;cursor:pointer;
+  }
+  .btn:hover{background:#ff7d1f;transform:translateY(-1px)}
+  .btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+  .btn.ghost:hover{border-color:var(--accent);color:var(--accent);background:transparent}
+  .menu-toggle{display:none;background:none;border:1px solid var(--line);border-radius:8px;color:var(--text);padding:8px 10px;cursor:pointer}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    padding:96px 0 80px;
+    background:
+      radial-gradient(1100px 500px at 78% -10%, rgba(255,106,0,.14), transparent 60%),
+      linear-gradient(180deg, var(--bg-2), var(--bg) 70%);
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+  }
+  .hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center;position:relative;z-index:2}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    color:var(--accent);font-weight:700;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;
+    background:rgba(255,106,0,.09);border:1px solid rgba(255,106,0,.25);
+    padding:7px 14px;border-radius:100px;margin-bottom:22px;
+  }
+  .hero h1{font-size:clamp(38px,6vw,68px);font-weight:700;text-transform:uppercase;margin-bottom:18px}
+  .hero h1 span{color:var(--accent)}
+  .hero p.lead{font-size:19px;color:var(--muted);max-width:520px;margin-bottom:30px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-stats{display:flex;gap:34px;margin-top:40px;flex-wrap:wrap}
+  .hero-stats div{border-left:2px solid var(--accent);padding-left:14px}
+  .hero-stats b{font-family:'Oswald';font-size:26px;display:block;line-height:1}
+  .hero-stats small{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:1px}
+  .hero-art{display:flex;justify-content:center}
+  .hero-art img{
+    width:min(400px,86vw);border-radius:50%;
+    border:3px solid rgba(255,106,0,.35);
+    box-shadow:var(--shadow), 0 0 0 12px rgba(255,255,255,.02);
+  }
+
+  /* ---------- Section shell ---------- */
+  section{padding:78px 0}
+  .section-head{max-width:640px;margin-bottom:46px}
+  .section-head .kick{color:var(--accent);font-weight:700;font-size:12px;letter-spacing:2.5px;text-transform:uppercase}
+  .section-head h2{font-size:clamp(28px,4vw,42px);text-transform:uppercase;margin:10px 0 12px}
+  .section-head p{color:var(--muted);font-size:17px}
+
+  /* ---------- Categories ---------- */
+  .cats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .cat{
+    background:linear-gradient(180deg,var(--panel),var(--panel-2));
+    border:1px solid var(--line);border-radius:var(--radius);padding:28px 26px;
+    transition:transform .18s ease,border-color .2s;position:relative;overflow:hidden;
+  }
+  .cat:hover{transform:translateY(-4px);border-color:rgba(255,106,0,.45)}
+  .cat .ic{font-size:30px;margin-bottom:16px;display:block}
+  .cat h3{font-size:21px;text-transform:uppercase;margin-bottom:8px}
+  .cat p{color:var(--muted);font-size:14.5px}
+  .cat::after{content:"";position:absolute;inset:0;border-radius:var(--radius);pointer-events:none;
+    background:radial-gradient(220px 120px at 100% 0,rgba(255,106,0,.08),transparent 70%)}
+
+  /* ---------- Feature strip ---------- */
+  .features{background:linear-gradient(180deg,var(--bg),var(--bg-2));border-block:1px solid var(--line)}
+  .feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+  .feature{text-align:left}
+  .feature .fic{width:44px;height:44px;display:grid;place-items:center;border-radius:10px;
+    background:rgba(255,106,0,.1);border:1px solid rgba(255,106,0,.28);font-size:20px;margin-bottom:14px}
+  .feature h3{font-size:17px;text-transform:uppercase;margin-bottom:6px;font-family:'Inter';font-weight:700;letter-spacing:.3px}
+  .feature p{color:var(--muted);font-size:14px}
+
+  /* ---------- About / split ---------- */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .split .panel{
+    background:linear-gradient(150deg,var(--panel-2),#121410);
+    border:1px solid var(--line);border-radius:18px;padding:36px;box-shadow:var(--shadow)
+  }
+  .split h2{font-size:clamp(28px,4vw,40px);text-transform:uppercase;margin-bottom:16px}
+  .split p{color:var(--muted);margin-bottom:16px}
+  .ticks{list-style:none;display:grid;gap:12px;margin-top:20px}
+  .ticks li{display:flex;gap:12px;align-items:flex-start;font-size:15px}
+  .ticks li::before{content:"✔";color:var(--accent);font-weight:700;margin-top:1px}
+  .panel .row{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--line)}
+  .panel .row:last-child{border-bottom:none}
+  .panel .row span:first-child{color:var(--muted)}
+  .panel .row span:last-child{font-family:'Oswald';font-size:18px}
+
+  /* ---------- Brands ---------- */
+  .brands{display:flex;flex-wrap:wrap;gap:14px}
+  .brands span{
+    border:1px solid var(--line);border-radius:100px;padding:10px 22px;color:var(--muted);
+    font-weight:600;font-size:14px;letter-spacing:.5px;background:var(--panel);transition:.2s
+  }
+  .brands span:hover{color:var(--text);border-color:var(--accent)}
+
+  /* ---------- CTA band ---------- */
+  .band{
+    background:
+      linear-gradient(90deg, rgba(255,106,0,.12), transparent 60%),
+      linear-gradient(180deg,var(--panel-2),#121410);
+    border:1px solid var(--line);border-radius:20px;padding:52px 44px;
+    display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;
+    box-shadow:var(--shadow)
+  }
+  .band h2{font-size:clamp(26px,3.4vw,38px);text-transform:uppercase}
+  .band p{color:var(--muted);margin-top:8px;max-width:460px}
+
+  /* ---------- Contact ---------- */
+  .contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .cc{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+  .cc .ic{font-size:24px;margin-bottom:12px}
+  .cc h3{font-size:16px;text-transform:uppercase;margin-bottom:6px;font-family:'Inter';font-weight:700}
+  .cc p{color:var(--muted);font-size:14.5px}
+  .cc a{color:var(--accent)}
+  .note{margin-top:18px;font-size:12.5px;color:var(--muted);opacity:.8}
+
+  /* ---------- Footer ---------- */
+  footer{border-top:1px solid var(--line);background:var(--bg-2);padding:40px 0 30px}
+  .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+  .foot .logo .brandmark{font-size:18px}
+  .foot small{color:var(--muted);font-size:13px}
+  .foot nav{display:flex;gap:20px;flex-wrap:wrap}
+  .foot nav a{color:var(--muted);font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+  .foot nav a:hover{color:var(--accent)}
+
+  /* ---------- Responsive ---------- */
+  @media(max-width:900px){
+    .hero .wrap{grid-template-columns:1fr;gap:36px}
+    .hero-art{order:-1}
+    .hero-art img{width:min(300px,70vw)}
+    .cats,.feature-grid,.contact-grid{grid-template-columns:1fr 1fr}
+    .split{grid-template-columns:1fr;gap:32px}
+    nav.links{display:none}
+    nav.links.open{display:flex;position:absolute;top:70px;left:0;right:0;flex-direction:column;
+      background:var(--bg);border-bottom:1px solid var(--line);padding:18px 22px;gap:16px}
+    .menu-toggle{display:block}
+  }
+  @media(max-width:560px){
+    .cats,.feature-grid,.contact-grid{grid-template-columns:1fr}
+    .band{padding:34px 26px}
+    section{padding:60px 0}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top">
+      <img src="assets/logo.jpg" alt="Shoot and Strike logo" />
+      <span class="brandmark">Shoot &amp; Strike<small>Hunting · Fishing</small></span>
+    </a>
+    <nav class="links" id="menu">
+      <a href="#shop">Shop</a>
+      <a href="#why">Why Us</a>
+      <a href="#about">About</a>
+      <a href="#brands">Brands</a>
+      <a href="#visit">Visit</a>
+      <a class="btn" href="#visit">Get In Touch</a>
+    </nav>
+    <button class="menu-toggle" id="toggle" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<a id="top"></a>
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="eyebrow">● Proudly South African Outfitter</span>
+      <h1>For All Your <span>Hunting</span> &amp; <span>Fishing</span> Needs</h1>
+      <p class="lead">From the bushveld to the water's edge — Shoot &amp; Strike kits you out with the gear, tackle and know-how to make every trip count.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#shop">Explore The Range</a>
+        <a class="btn ghost" href="#visit">Visit The Store</a>
+      </div>
+      <div class="hero-stats">
+        <div><b>Hunting</b><small>Rifles &amp; Gear</small></div>
+        <div><b>Fishing</b><small>Rods &amp; Tackle</small></div>
+        <div><b>Outdoor</b><small>Camp &amp; Camo</small></div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <img src="assets/logo.jpg" alt="Shoot and Strike buck emblem" />
+    </div>
+  </div>
+</section>
+
+<!-- SHOP / CATEGORIES -->
+<section id="shop">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kick">The Range</span>
+      <h2>Everything For Field &amp; Water</h2>
+      <p>One store for the hunter and the angler. Walk in for expert advice, walk out kitted for the trip.</p>
+    </div>
+    <div class="cats">
+      <div class="cat"><span class="ic">🎯</span><h3>Hunting Rifles</h3><p>Bolt-action, hunting and sport rifles from the brands you trust — matched to your game and terrain.</p></div>
+      <div class="cat"><span class="ic">🔫</span><h3>Ammunition</h3><p>Rimfire to big-bore, plus reloading components. Stocked calibres for the South African bushveld.</p></div>
+      <div class="cat"><span class="ic">🔭</span><h3>Optics &amp; Scopes</h3><p>Riflescopes, binoculars, rangefinders and red dots — fitted and zeroed by our team.</p></div>
+      <div class="cat"><span class="ic">🎣</span><h3>Fishing Tackle</h3><p>Rods, reels, line and terminal tackle for freshwater, saltwater and fly — for the weekend or the record.</p></div>
+      <div class="cat"><span class="ic">🪝</span><h3>Bait &amp; Lures</h3><p>Lures, flies, hooks and baits to match the water. Fresh advice on what's biting.</p></div>
+      <div class="cat"><span class="ic">🥾</span><h3>Camo &amp; Apparel</h3><p>Camo, boots, jackets and field clothing built to take a beating in any season.</p></div>
+      <div class="cat"><span class="ic">🏕️</span><h3>Camping &amp; Outdoor</h3><p>Tents, coolers, lighting and kit to keep you comfortable when the trip runs long.</p></div>
+      <div class="cat"><span class="ic">🔪</span><h3>Knives &amp; Tools</h3><p>Hunting knives, multi-tools and field-dressing gear that hold an edge when it matters.</p></div>
+      <div class="cat"><span class="ic">🧰</span><h3>Accessories</h3><p>Safes, cleaning kits, slings, torches and the odds &amp; ends that finish the setup.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why" class="features">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kick">Why Shoot &amp; Strike</span>
+      <h2>Gear You Trust, Advice You Can Use</h2>
+    </div>
+    <div class="feature-grid">
+      <div class="feature"><div class="fic">🦌</div><h3>Hunters &amp; Anglers</h3><p>We're in the field too. Our advice comes from real trips, not a spec sheet.</p></div>
+      <div class="feature"><div class="fic">🇿🇦</div><h3>Local &amp; Licensed</h3><p>A South African store that knows local game, waters, seasons and the paperwork.</p></div>
+      <div class="feature"><div class="fic">✅</div><h3>Quality Brands</h3><p>We stock proven, warrantied gear — nothing that won't earn its place in your kit.</p></div>
+      <div class="feature"><div class="fic">🤝</div><h3>Kitted Out Right</h3><p>From first rifle to first cast, we help you buy once and buy right.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap split">
+    <div>
+      <span class="kick" style="color:var(--accent);font-weight:700;letter-spacing:2.5px;text-transform:uppercase;font-size:12px">Our Store</span>
+      <h2>Built By People Who Live The Outdoors</h2>
+      <p>Shoot &amp; Strike is a South African hunting and fishing outfitter serving hunters, anglers and outdoor families across the country. We started with one idea — a single store that treats the rifle bag and the tackle box with the same respect.</p>
+      <p>Whether you're heading out for plains game at first light or chasing a line at the dam, we'll make sure you're set with the right gear and honest advice.</p>
+      <ul class="ticks">
+        <li>Full hunting &amp; fishing range under one roof</li>
+        <li>Hands-on staff who hunt and fish themselves</li>
+        <li>Scope fitting, zeroing &amp; gear setup</li>
+        <li>Support for first-timers and seasoned hands alike</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <div class="row"><span>Located</span><span>South Africa 🇿🇦</span></div>
+      <div class="row"><span>Departments</span><span>Hunting &amp; Fishing</span></div>
+      <div class="row"><span>Specialty</span><span>Full Outdoor Kit</span></div>
+      <div class="row"><span>In Store</span><span>Expert Advice</span></div>
+      <div class="row"><span>Fitting</span><span>Scopes &amp; Optics</span></div>
+      <div style="margin-top:24px"><a class="btn" href="#visit" style="width:100%;text-align:center">Plan Your Visit</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section id="brands" class="features">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kick">On Our Shelves</span>
+      <h2>Categories We Stock</h2>
+      <p>A curated line-up across every department — ask in store about specific brands and current stock.</p>
+    </div>
+    <div class="brands">
+      <span>Rifles</span><span>Shotguns</span><span>Air Rifles</span><span>Ammunition</span>
+      <span>Reloading</span><span>Riflescopes</span><span>Binoculars</span><span>Rangefinders</span>
+      <span>Fishing Rods</span><span>Reels</span><span>Fly Fishing</span><span>Lures &amp; Baits</span>
+      <span>Camo Apparel</span><span>Boots</span><span>Knives</span><span>Camping Gear</span>
+      <span>Safes</span><span>Cleaning Kits</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section>
+  <div class="wrap">
+    <div class="band">
+      <div>
+        <h2>Ready For The Next Trip?</h2>
+        <p>Come through and let's get you kitted out — for the hunt, the water, or both.</p>
+      </div>
+      <a class="btn" href="#visit" style="font-size:15px;padding:14px 26px">Get In Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT / CONTACT -->
+<section id="visit">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kick">Visit Us</span>
+      <h2>Find Shoot &amp; Strike</h2>
+      <p>Drop in, call, or message us — we're happy to help you plan your kit before you buy.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="cc"><div class="ic">📍</div><h3>Store</h3><p>South Africa<br/>Address coming soon</p></div>
+      <div class="cc"><div class="ic">📞</div><h3>Call / WhatsApp</h3><p><a href="#">Phone number coming soon</a></p></div>
+      <div class="cc"><div class="ic">✉️</div><h3>Email</h3><p><a href="#">Email coming soon</a></p></div>
+      <div class="cc"><div class="ic">🕑</div><h3>Trading Hours</h3><p>Mon – Fri: 08:00 – 17:00<br/>Sat: 08:00 – 13:00</p></div>
+      <div class="cc"><div class="ic">📷</div><h3>Social</h3><p><a href="#">Follow us — links coming soon</a></p></div>
+      <div class="cc"><div class="ic">🎯</div><h3>In Store</h3><p>Scope fitting, gear advice &amp; full hunting + fishing range.</p></div>
+    </div>
+    <p class="note">Contact details are being finalised — this page will be updated with the store's address, phone and social links.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <a class="logo" href="#top">
+      <img src="assets/logo.jpg" alt="Shoot and Strike logo" />
+      <span class="brandmark">Shoot &amp; Strike<small>Hunting · Fishing</small></span>
+    </a>
+    <nav>
+      <a href="#shop">Shop</a>
+      <a href="#why">Why Us</a>
+      <a href="#about">About</a>
+      <a href="#brands">Brands</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <small>© <span id="yr"></span> Shoot &amp; Strike · Hunting &amp; Fishing · South Africa 🇿🇦</small>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  var t = document.getElementById('toggle'), m = document.getElementById('menu');
+  t.addEventListener('click', function(){ m.classList.toggle('open'); });
+  m.addEventListener('click', function(e){ if(e.target.tagName==='A') m.classList.remove('open'); });
+</script>
+
+</body>
+</html>

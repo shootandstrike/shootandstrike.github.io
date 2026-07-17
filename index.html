@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Shoot &amp; Strike — Hunting &amp; Fishing | South Africa</title>
 <meta name="description" content="Shoot &amp; Strike is a South African hunting and fishing outfitter. Rifles, ammunition, optics, fishing tackle, camo apparel and camping gear — everything for the field and the water." />
-<meta name="theme-color" content="#0d0f0e" />
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#0b0c0b" media="(prefers-color-scheme: dark)" />
 <meta property="og:title" content="Shoot &amp; Strike — Hunting &amp; Fishing" />
 <meta property="og:description" content="South Africa's outfitter for all your hunting and fishing needs." />
 <meta property="og:type" content="website" />
@@ -14,23 +15,55 @@
 <link rel="apple-touch-icon" href="assets/logo.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
+  /* ---------- Tokens: black / white / light green ---------- */
   :root{
-    --bg:#0d0f0e;
-    --bg-2:#14100d;
-    --panel:#181a17;
-    --panel-2:#1f221d;
-    --line:#2c2f29;
-    --text:#eef0ea;
-    --muted:#a2a89b;
-    --accent:#ff6a00;      /* blaze / hunter orange */
-    --accent-2:#c95400;
-    --camo:#3a4034;
-    --maxw:1160px;
-    --radius:14px;
-    --shadow:0 18px 40px rgba(0,0,0,.45);
+    --bg:#ffffff;
+    --surface:#fafbf8;
+    --text:#0e100e;
+    --muted:#636b60;
+    --line:#e4e7df;
+    --accent:#8fbc5a;        /* light green */
+    --accent-ink:#4a6b28;    /* readable green for small text on white */
+    --btn-ink:#0e100e;
+    --camo-a:#0e100e;
+    --camo-b:#8fbc5a;
+    --camo-c:#636b60;
+    --camo-op:.07;
+    --maxw:1080px;
   }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0b0c0b;
+      --surface:#121412;
+      --text:#f2f4ef;
+      --muted:#9aa394;
+      --line:#232722;
+      --accent:#a3d465;
+      --accent-ink:#a3d465;
+      --btn-ink:#0b0c0b;
+      --camo-a:#f2f4ef;
+      --camo-b:#a3d465;
+      --camo-c:#9aa394;
+      --camo-op:.09;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0b0c0b;
+    --surface:#121412;
+    --text:#f2f4ef;
+    --muted:#9aa394;
+    --line:#232722;
+    --accent:#a3d465;
+    --accent-ink:#a3d465;
+    --btn-ink:#0b0c0b;
+    --camo-a:#f2f4ef;
+    --camo-b:#a3d465;
+    --camo-c:#9aa394;
+    --camo-op:.09;
+  }
+
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{
@@ -41,169 +74,153 @@
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
   }
-  h1,h2,h3,.brandmark{font-family:'Oswald',Impact,sans-serif;letter-spacing:.5px;line-height:1.1}
   a{color:inherit;text-decoration:none}
   img{max-width:100%;display:block}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
-  .accent{color:var(--accent)}
+  h1,h2,h3{font-weight:600;line-height:1.12;letter-spacing:-.03em}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .kick{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  }
+  .kick::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
 
   /* ---------- Header ---------- */
   header{
     position:sticky;top:0;z-index:50;
-    background:rgba(13,15,14,.82);
-    backdrop-filter:blur(10px);
+    background:var(--bg); /* fallback where color-mix is unsupported */
+    background:color-mix(in srgb, var(--bg) 86%, transparent);
+    backdrop-filter:blur(8px);
     border-bottom:1px solid var(--line);
   }
-  .nav{display:flex;align-items:center;justify-content:space-between;height:70px}
-  .logo{display:flex;align-items:center;gap:12px}
-  .logo img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--line)}
-  .logo .brandmark{font-size:20px;font-weight:700;text-transform:uppercase}
-  .logo .brandmark small{display:block;font-size:10px;letter-spacing:3px;color:var(--muted);font-family:'Inter',sans-serif;font-weight:600}
-  nav.links{display:flex;gap:28px;align-items:center}
-  nav.links a{color:var(--muted);font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;transition:color .2s}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+  .logo{display:flex;align-items:center;gap:11px}
+  .logo img{width:32px;height:32px;border-radius:50%;object-fit:cover}
+  .logo b{font-size:15px;font-weight:600;letter-spacing:-.01em}
+  nav.links{display:flex;gap:26px;align-items:center}
+  nav.links a{color:var(--muted);font-size:14px;transition:color .15s}
   nav.links a:hover{color:var(--text)}
-  .btn{
-    display:inline-block;background:var(--accent);color:#160b02;font-weight:700;
-    padding:11px 20px;border-radius:8px;font-size:14px;text-transform:uppercase;letter-spacing:.5px;
-    transition:transform .15s ease, background .2s;border:none;cursor:pointer;
+  .tools{display:flex;align-items:center;gap:8px}
+  .icon-btn{
+    width:34px;height:34px;display:grid;place-items:center;
+    background:none;border:1px solid var(--line);border-radius:8px;
+    color:var(--text);cursor:pointer;transition:border-color .15s;
   }
-  .btn:hover{background:#ff7d1f;transform:translateY(-1px)}
+  .icon-btn:hover{border-color:var(--accent)}
+  .icon-btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round}
+  .menu-toggle{display:none}
+  [data-theme="dark"] .i-sun, .i-moon{display:block}
+  [data-theme="dark"] .i-moon, .i-sun{display:none}
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]) .i-sun{display:block}
+    :root:not([data-theme="light"]) .i-moon{display:none}
+  }
+  :root[data-theme="light"] .i-moon{display:block}
+  :root[data-theme="light"] .i-sun{display:none}
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-block;background:var(--accent);color:var(--btn-ink);
+    font-weight:500;font-size:14px;padding:11px 20px;border-radius:8px;
+    transition:opacity .15s;
+  }
+  .btn:hover{opacity:.85}
   .btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
-  .btn.ghost:hover{border-color:var(--accent);color:var(--accent);background:transparent}
-  .menu-toggle{display:none;background:none;border:1px solid var(--line);border-radius:8px;color:var(--text);padding:8px 10px;cursor:pointer}
+  .btn.ghost:hover{border-color:var(--accent);opacity:1}
 
   /* ---------- Hero ---------- */
-  .hero{
-    position:relative;
-    padding:96px 0 80px;
-    background:
-      radial-gradient(1100px 500px at 78% -10%, rgba(255,106,0,.14), transparent 60%),
-      linear-gradient(180deg, var(--bg-2), var(--bg) 70%);
-    border-bottom:1px solid var(--line);
-    overflow:hidden;
+  .hero{position:relative;padding:104px 0 96px;overflow:hidden;border-bottom:1px solid var(--line)}
+  .camo{
+    position:absolute;inset:0;width:100%;height:100%;
+    opacity:var(--camo-op);pointer-events:none;
+    /* dissolve toward the section edge instead of cutting off */
+    -webkit-mask-image:linear-gradient(to bottom,#000 45%,transparent 96%);
+    mask-image:linear-gradient(to bottom,#000 45%,transparent 96%);
   }
-  .hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center;position:relative;z-index:2}
-  .eyebrow{
-    display:inline-flex;align-items:center;gap:9px;
-    color:var(--accent);font-weight:700;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;
-    background:rgba(255,106,0,.09);border:1px solid rgba(255,106,0,.25);
-    padding:7px 14px;border-radius:100px;margin-bottom:22px;
-  }
-  .hero h1{font-size:clamp(38px,6vw,68px);font-weight:700;text-transform:uppercase;margin-bottom:18px}
-  .hero h1 span{color:var(--accent)}
-  .hero p.lead{font-size:19px;color:var(--muted);max-width:520px;margin-bottom:30px}
-  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
-  .hero-stats{display:flex;gap:34px;margin-top:40px;flex-wrap:wrap}
-  .hero-stats div{border-left:2px solid var(--accent);padding-left:14px}
-  .hero-stats b{font-family:'Oswald';font-size:26px;display:block;line-height:1}
-  .hero-stats small{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:1px}
+  .hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:56px;align-items:center;position:relative;z-index:1}
+  .hero h1{font-size:clamp(38px,5.6vw,60px);margin:20px 0 18px}
+  .hero h1 em{font-style:normal;color:var(--accent-ink)}
+  .hero p{font-size:17px;color:var(--muted);max-width:460px;margin-bottom:30px}
+  .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
   .hero-art{display:flex;justify-content:center}
-  .hero-art img{
-    width:min(400px,86vw);border-radius:50%;
-    border:3px solid rgba(255,106,0,.35);
-    box-shadow:var(--shadow), 0 0 0 12px rgba(255,255,255,.02);
+  .hero-art img{width:min(280px,72vw);border-radius:50%;border:1px solid var(--line)}
+
+  /* ---------- Sections ---------- */
+  section{padding:88px 0}
+  .section-head{max-width:560px;margin-bottom:44px}
+  .section-head h2{font-size:clamp(26px,3.4vw,36px);margin:12px 0 12px}
+  .section-head p{color:var(--muted);font-size:16px}
+
+  /* ---------- Range (hairline grid) ---------- */
+  .grid{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    border-top:1px solid var(--line);border-left:1px solid var(--line);
   }
-
-  /* ---------- Section shell ---------- */
-  section{padding:78px 0}
-  .section-head{max-width:640px;margin-bottom:46px}
-  .section-head .kick{color:var(--accent);font-weight:700;font-size:12px;letter-spacing:2.5px;text-transform:uppercase}
-  .section-head h2{font-size:clamp(28px,4vw,42px);text-transform:uppercase;margin:10px 0 12px}
-  .section-head p{color:var(--muted);font-size:17px}
-
-  /* ---------- Categories ---------- */
-  .cats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-  .cat{
-    background:linear-gradient(180deg,var(--panel),var(--panel-2));
-    border:1px solid var(--line);border-radius:var(--radius);padding:28px 26px;
-    transition:transform .18s ease,border-color .2s;position:relative;overflow:hidden;
+  .cell{
+    border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+    padding:28px 26px;transition:background .15s;
   }
-  .cat:hover{transform:translateY(-4px);border-color:rgba(255,106,0,.45)}
-  .cat .ic{font-size:30px;margin-bottom:16px;display:block}
-  .cat h3{font-size:21px;text-transform:uppercase;margin-bottom:8px}
-  .cat p{color:var(--muted);font-size:14.5px}
-  .cat::after{content:"";position:absolute;inset:0;border-radius:var(--radius);pointer-events:none;
-    background:radial-gradient(220px 120px at 100% 0,rgba(255,106,0,.08),transparent 70%)}
+  .cell:hover{background:var(--surface)}
+  .cell h3{font-size:16px;margin-bottom:7px}
+  .cell p{color:var(--muted);font-size:14px;line-height:1.55}
 
-  /* ---------- Feature strip ---------- */
-  .features{background:linear-gradient(180deg,var(--bg),var(--bg-2));border-block:1px solid var(--line)}
-  .feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-  .feature{text-align:left}
-  .feature .fic{width:44px;height:44px;display:grid;place-items:center;border-radius:10px;
-    background:rgba(255,106,0,.1);border:1px solid rgba(255,106,0,.28);font-size:20px;margin-bottom:14px}
-  .feature h3{font-size:17px;text-transform:uppercase;margin-bottom:6px;font-family:'Inter';font-weight:700;letter-spacing:.3px}
-  .feature p{color:var(--muted);font-size:14px}
-
-  /* ---------- About / split ---------- */
-  .split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-  .split .panel{
-    background:linear-gradient(150deg,var(--panel-2),#121410);
-    border:1px solid var(--line);border-radius:18px;padding:36px;box-shadow:var(--shadow)
-  }
-  .split h2{font-size:clamp(28px,4vw,40px);text-transform:uppercase;margin-bottom:16px}
-  .split p{color:var(--muted);margin-bottom:16px}
-  .ticks{list-style:none;display:grid;gap:12px;margin-top:20px}
-  .ticks li{display:flex;gap:12px;align-items:flex-start;font-size:15px}
-  .ticks li::before{content:"✔";color:var(--accent);font-weight:700;margin-top:1px}
-  .panel .row{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--line)}
-  .panel .row:last-child{border-bottom:none}
+  /* ---------- About ---------- */
+  .split{display:grid;grid-template-columns:1fr .82fr;gap:64px;align-items:start}
+  .split h2{font-size:clamp(26px,3.4vw,36px);margin:12px 0 16px}
+  .split p{color:var(--muted);margin-bottom:14px;font-size:15.5px}
+  .ticks{list-style:none;display:grid;gap:11px;margin-top:24px}
+  .ticks li{display:flex;gap:11px;align-items:baseline;font-size:15px}
+  .ticks li::before{content:"";flex:none;width:5px;height:5px;border-radius:50%;background:var(--accent);transform:translateY(-2px)}
+  .panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px 22px 22px}
+  .panel .row{display:flex;justify-content:space-between;gap:16px;padding:15px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+  .panel .row:last-of-type{border-bottom:none}
   .panel .row span:first-child{color:var(--muted)}
-  .panel .row span:last-child{font-family:'Oswald';font-size:18px}
+  .panel .row span:last-child{font-weight:500}
 
-  /* ---------- Brands ---------- */
-  .brands{display:flex;flex-wrap:wrap;gap:14px}
-  .brands span{
-    border:1px solid var(--line);border-radius:100px;padding:10px 22px;color:var(--muted);
-    font-weight:600;font-size:14px;letter-spacing:.5px;background:var(--panel);transition:.2s
+  /* ---------- Stock ---------- */
+  .tags{display:flex;flex-wrap:wrap;gap:9px}
+  .tags span{
+    border:1px solid var(--line);border-radius:100px;padding:8px 17px;
+    color:var(--muted);font-size:13.5px;transition:.15s;
   }
-  .brands span:hover{color:var(--text);border-color:var(--accent)}
+  .tags span:hover{color:var(--text);border-color:var(--accent)}
 
-  /* ---------- CTA band ---------- */
-  .band{
-    background:
-      linear-gradient(90deg, rgba(255,106,0,.12), transparent 60%),
-      linear-gradient(180deg,var(--panel-2),#121410);
-    border:1px solid var(--line);border-radius:20px;padding:52px 44px;
-    display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;
-    box-shadow:var(--shadow)
-  }
-  .band h2{font-size:clamp(26px,3.4vw,38px);text-transform:uppercase}
-  .band p{color:var(--muted);margin-top:8px;max-width:460px}
-
-  /* ---------- Contact ---------- */
-  .contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-  .cc{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
-  .cc .ic{font-size:24px;margin-bottom:12px}
-  .cc h3{font-size:16px;text-transform:uppercase;margin-bottom:6px;font-family:'Inter';font-weight:700}
-  .cc p{color:var(--muted);font-size:14.5px}
-  .cc a{color:var(--accent)}
-  .note{margin-top:18px;font-size:12.5px;color:var(--muted);opacity:.8}
+  /* ---------- Visit ---------- */
+  .cc h3{font-size:13px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+  .cc p{font-size:15px;line-height:1.6}
+  .cc a{color:var(--accent-ink)}
+  .cc a:hover{text-decoration:underline}
+  .note{margin-top:32px;font-size:13px;color:var(--muted)}
 
   /* ---------- Footer ---------- */
-  footer{border-top:1px solid var(--line);background:var(--bg-2);padding:40px 0 30px}
+  footer{border-top:1px solid var(--line);padding:36px 0}
   .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
-  .foot .logo .brandmark{font-size:18px}
   .foot small{color:var(--muted);font-size:13px}
-  .foot nav{display:flex;gap:20px;flex-wrap:wrap}
-  .foot nav a{color:var(--muted);font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
-  .foot nav a:hover{color:var(--accent)}
+  .foot nav{display:flex;gap:18px;flex-wrap:wrap}
+  .foot nav a{color:var(--muted);font-size:13px}
+  .foot nav a:hover{color:var(--text)}
 
   /* ---------- Responsive ---------- */
   @media(max-width:900px){
-    .hero .wrap{grid-template-columns:1fr;gap:36px}
-    .hero-art{order:-1}
-    .hero-art img{width:min(300px,70vw)}
-    .cats,.feature-grid,.contact-grid{grid-template-columns:1fr 1fr}
-    .split{grid-template-columns:1fr;gap:32px}
+    .hero{padding:72px 0 68px}
+    .hero .wrap{grid-template-columns:1fr;gap:40px}
+    .hero-art{order:-1;justify-content:flex-start}
+    .hero-art img{width:min(180px,44vw)}
+    .split{grid-template-columns:1fr;gap:36px}
+    .grid{grid-template-columns:repeat(2,1fr)}
+    section{padding:64px 0}
     nav.links{display:none}
-    nav.links.open{display:flex;position:absolute;top:70px;left:0;right:0;flex-direction:column;
-      background:var(--bg);border-bottom:1px solid var(--line);padding:18px 22px;gap:16px}
-    .menu-toggle{display:block}
+    nav.links.open{
+      display:flex;position:absolute;top:64px;left:0;right:0;flex-direction:column;align-items:flex-start;
+      background:var(--bg);border-bottom:1px solid var(--line);padding:18px 24px;gap:16px;
+    }
+    .menu-toggle{display:grid}
   }
   @media(max-width:560px){
-    .cats,.feature-grid,.contact-grid{grid-template-columns:1fr}
-    .band{padding:34px 26px}
-    section{padding:60px 0}
+    .grid{grid-template-columns:1fr}
+  }
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *{transition:none!important}
   }
 </style>
 </head>
@@ -213,35 +230,47 @@
   <div class="wrap nav">
     <a class="logo" href="#top">
       <img src="assets/logo.jpg" alt="Shoot and Strike logo" />
-      <span class="brandmark">Shoot &amp; Strike<small>Hunting · Fishing</small></span>
+      <b>Shoot &amp; Strike</b>
     </a>
     <nav class="links" id="menu">
-      <a href="#shop">Shop</a>
-      <a href="#why">Why Us</a>
+      <a href="#range">Range</a>
       <a href="#about">About</a>
-      <a href="#brands">Brands</a>
+      <a href="#stock">Stock</a>
       <a href="#visit">Visit</a>
-      <a class="btn" href="#visit">Get In Touch</a>
     </nav>
-    <button class="menu-toggle" id="toggle" aria-label="Menu">☰</button>
+    <div class="tools">
+      <button class="icon-btn" id="theme" aria-label="Toggle colour theme">
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.4M12 19v2.4M2.6 12h2.4M19 12h2.4M5.3 5.3l1.7 1.7M17 17l1.7 1.7M18.7 5.3L17 7M7 17l-1.7 1.7"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.6A8.5 8.5 0 1 1 9.4 3.5a6.8 6.8 0 0 0 11.1 11.1z"/></svg>
+      </button>
+      <button class="icon-btn menu-toggle" id="toggle" aria-label="Menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
   </div>
 </header>
 
 <a id="top"></a>
+
 <section class="hero">
+  <svg class="camo" aria-hidden="true">
+    <defs>
+      <pattern id="camo" width="400" height="400" patternUnits="userSpaceOnUse">
+        <path fill="var(--camo-a)" d="M197 238C193 249 189 256 184 264C180 272 174 274 169 286C164 299 163 334 154 339C144 345 121 330 112 320C102 310 102 290 97 280C93 270 94 267 85 260C76 253 47 248 43 238C39 229 53 214 59 204C66 194 72 183 81 176C90 170 103 164 114 165C124 165 137 171 144 177C152 183 150 196 161 200C172 204 202 194 208 201C214 207 201 228 197 238ZM323 -41C322 -28 323 -16 318 -5C313 6 303 12 294 24C284 36 274 67 262 67C251 67 235 34 225 23C215 12 213 8 202 1C191 -6 170 -8 161 -19C153 -30 145 -53 150 -65C154 -78 176 -89 190 -94C203 -98 218 -83 230 -91C242 -98 249 -135 261 -139C273 -143 290 -125 300 -115C310 -105 319 -92 323 -80C327 -67 323 -53 323 -41ZM323 359C322 372 323 384 318 395C313 406 303 412 294 424C284 436 274 467 262 467C251 467 235 434 225 423C215 412 213 408 202 401C191 394 170 392 161 381C153 370 145 347 150 335C154 322 176 311 190 306C203 302 218 317 230 309C242 302 249 265 261 261C273 257 290 275 300 285C310 295 319 308 323 320C327 333 323 347 323 359ZM43 101C44 113 22 128 12 140C3 152 -2 171 -13 175C-25 179 -40 161 -56 164C-72 167 -96 195 -109 192C-122 189 -133 162 -136 147C-139 131 -128 115 -127 101C-126 86 -136 68 -131 58C-125 47 -104 51 -92 39C-79 27 -69 -11 -56 -12C-44 -13 -28 21 -18 34C-8 47 -6 55 4 66C14 77 41 88 43 101ZM43 501C44 513 22 528 12 540C3 552 -2 571 -13 575C-25 579 -40 561 -56 564C-72 567 -96 595 -109 592C-122 589 -133 562 -136 547C-139 531 -128 515 -127 501C-126 486 -136 468 -131 458C-125 447 -104 451 -92 439C-79 427 -69 389 -56 388C-44 387 -28 421 -18 434C-8 447 -6 455 4 466C14 477 41 488 43 501ZM443 101C444 113 422 128 412 140C403 152 398 171 387 175C375 179 360 161 344 164C328 167 304 195 291 192C278 189 267 162 264 147C261 131 272 115 273 101C274 86 264 68 269 58C275 47 296 51 308 39C321 27 331 -11 344 -12C356 -13 372 21 382 34C392 47 394 55 404 66C414 77 441 88 443 101ZM443 501C444 513 422 528 412 540C403 552 398 571 387 575C375 579 360 561 344 564C328 567 304 595 291 592C278 589 267 562 264 547C261 531 272 515 273 501C274 486 264 468 269 458C275 447 296 451 308 439C321 427 331 389 344 388C356 387 372 421 382 434C392 447 394 455 404 466C414 477 441 488 443 501ZM349 149C344 159 339 166 334 173C329 180 323 182 318 191C313 200 314 221 306 228C298 234 282 233 272 230C262 227 252 218 245 210C239 202 236 192 233 183C231 175 234 169 229 160C224 152 204 143 201 132C198 122 204 107 211 99C218 91 234 88 244 87C255 85 266 88 274 91C283 94 286 103 295 103C305 103 321 90 332 91C343 93 358 104 361 113C363 123 353 139 349 149ZM29 209C29 224 27 246 17 256C7 266 -15 265 -28 269C-42 273 -51 279 -66 281C-81 283 -106 289 -119 281C-131 273 -137 249 -139 233C-140 218 -135 201 -129 188C-122 175 -112 165 -102 156C-92 146 -81 137 -67 131C-53 126 -31 118 -17 124C-3 129 9 148 16 163C24 177 29 193 29 209ZM429 209C429 224 427 246 417 256C407 266 385 265 372 269C358 273 349 279 334 281C319 283 294 289 281 281C269 273 263 249 261 233C260 218 265 201 271 188C278 175 288 165 298 156C308 146 319 137 333 131C347 126 369 118 383 124C397 129 409 148 416 163C424 177 429 193 429 209Z"/>
+        <path fill="var(--camo-b)" d="M176 133C177 141 188 153 186 159C184 165 170 166 163 171C155 177 152 186 143 191C134 197 116 210 108 206C100 202 97 180 94 170C90 160 86 153 85 145C84 137 83 127 86 120C89 113 98 110 103 103C108 96 109 87 116 79C123 72 135 60 145 60C154 60 166 71 173 79C179 87 182 99 183 108C183 117 175 124 176 133ZM70 265C70 277 84 292 80 301C77 309 58 311 48 317C39 324 33 339 24 340C15 341 2 330 -7 325C-15 319 -23 316 -28 309C-34 303 -31 295 -40 288C-48 280 -73 275 -78 265C-84 255 -79 236 -72 227C-64 219 -45 214 -34 215C-22 215 -10 229 -2 228C7 227 10 213 20 208C30 203 50 195 60 199C70 202 80 218 82 229C84 240 70 253 70 265ZM470 265C470 277 484 292 480 301C477 309 458 311 448 317C439 324 433 339 424 340C415 341 402 330 393 325C385 319 377 316 372 309C366 303 369 295 360 288C352 280 327 275 322 265C316 255 321 236 328 227C336 219 355 214 366 215C378 215 390 229 398 228C407 227 410 213 420 208C430 203 450 195 460 199C470 202 480 218 482 229C484 240 470 253 470 265ZM284 -43C284 -30 284 -17 279 -6C274 5 263 12 252 22C241 32 225 57 215 54C204 50 200 11 189 2C177 -8 154 4 146 -3C138 -11 139 -30 139 -43C139 -56 140 -71 145 -83C151 -96 160 -116 171 -118C183 -119 200 -90 215 -91C229 -91 249 -122 259 -120C270 -119 276 -93 280 -81C284 -68 284 -55 284 -43ZM284 357C284 370 284 383 279 394C274 405 263 412 252 422C241 432 225 457 215 454C204 450 200 411 189 402C177 392 154 404 146 397C138 389 139 370 139 357C139 344 140 329 145 317C151 304 160 284 171 282C183 281 200 310 215 309C229 309 249 278 259 280C270 281 276 307 280 319C284 332 284 345 284 357ZM361 101C360 110 344 119 338 127C333 135 331 144 325 151C319 158 311 166 303 169C294 172 282 171 273 169C264 166 259 158 250 154C240 151 224 154 216 148C208 141 202 128 202 118C202 108 211 95 218 88C224 80 236 81 240 72C245 63 237 45 243 35C248 26 261 15 271 14C281 13 296 22 303 30C311 38 307 57 314 64C320 71 334 68 341 74C349 80 361 92 361 101ZM361 501C360 510 344 519 338 527C333 535 331 544 325 551C319 558 311 566 303 569C294 572 282 571 273 569C264 566 259 558 250 554C240 551 224 554 216 548C208 541 202 528 202 518C202 508 211 495 218 488C224 480 236 481 240 472C245 463 237 445 243 435C248 426 261 415 271 414C281 413 296 422 303 430C311 438 307 457 314 464C320 471 334 468 341 474C349 480 361 492 361 501ZM-32 53C-32 61 -20 70 -20 79C-20 88 -24 103 -32 107C-39 111 -54 105 -63 103C-72 101 -78 99 -86 96C-93 93 -103 92 -108 87C-113 82 -112 73 -117 64C-122 56 -138 44 -137 36C-135 29 -117 22 -108 19C-99 15 -91 19 -84 16C-76 12 -71 1 -63 -1C-55 -3 -43 -1 -36 4C-29 8 -21 19 -21 27C-20 35 -32 44 -32 53ZM-32 453C-32 461 -20 470 -20 479C-20 488 -24 503 -32 507C-39 511 -54 505 -63 503C-72 501 -78 499 -86 496C-93 493 -103 492 -108 487C-113 482 -112 473 -117 464C-122 456 -138 444 -137 436C-135 429 -117 422 -108 419C-99 415 -91 419 -84 416C-76 412 -71 401 -63 399C-55 397 -43 399 -36 404C-29 408 -21 419 -21 427C-20 435 -32 444 -32 453ZM368 53C368 61 380 70 380 79C380 88 376 103 368 107C361 111 346 105 337 103C328 101 322 99 314 96C307 93 297 92 292 87C287 82 288 73 283 64C278 56 262 44 263 36C265 29 283 22 292 19C301 15 309 19 316 16C324 12 329 1 337 -1C345 -3 357 -1 364 4C371 8 379 19 379 27C380 35 368 44 368 53ZM368 453C368 461 380 470 380 479C380 488 376 503 368 507C361 511 346 505 337 503C328 501 322 499 314 496C307 493 297 492 292 487C287 482 288 473 283 464C278 456 262 444 263 436C265 429 283 422 292 419C301 415 309 419 316 416C324 412 329 401 337 399C345 397 357 399 364 404C371 408 379 419 379 427C380 435 368 444 368 453ZM-23 189C-23 196 -45 204 -52 211C-59 218 -62 218 -66 230C-70 241 -69 271 -78 278C-87 285 -107 278 -118 272C-129 267 -138 256 -144 246C-151 237 -153 226 -156 216C-159 207 -160 199 -162 189C-164 179 -170 164 -167 156C-163 147 -148 146 -139 137C-131 129 -128 110 -118 105C-108 99 -89 99 -79 104C-69 110 -64 128 -59 139C-54 149 -56 157 -50 165C-44 173 -23 181 -23 189ZM377 189C377 196 355 204 348 211C341 218 338 218 334 230C330 241 331 271 322 278C313 285 293 278 282 272C271 267 262 256 256 246C249 237 247 226 244 216C241 207 240 199 238 189C236 179 230 164 233 156C237 147 252 146 261 137C269 129 272 110 282 105C292 99 311 99 321 104C331 110 336 128 341 139C346 149 344 157 350 165C356 173 377 181 377 189Z"/>
+        <path fill="var(--camo-c)" d="M251 257C253 265 246 279 239 285C232 290 218 286 210 289C202 293 199 303 191 305C183 308 171 310 163 306C155 302 150 292 146 283C142 275 136 265 138 257C139 249 152 244 157 237C162 231 163 226 169 218C175 211 183 193 191 192C199 191 210 206 217 213C223 221 222 228 228 236C234 243 250 249 251 257ZM270 181C271 187 277 194 276 202C276 209 272 219 267 224C262 230 251 234 243 233C236 231 231 219 224 215C218 211 211 213 205 209C200 206 193 198 193 192C192 186 200 179 202 173C204 166 201 158 204 152C207 145 212 137 219 133C226 129 237 125 244 128C250 131 254 145 258 151C262 157 265 160 268 165C270 170 269 175 270 181ZM80 67C81 76 63 89 55 97C46 105 37 108 29 112C20 116 12 119 2 120C-7 121 -19 122 -27 118C-35 114 -39 104 -47 95C-55 87 -77 75 -76 67C-74 58 -48 49 -38 43C-28 38 -23 42 -17 34C-10 25 -7 -5 2 -10C11 -14 29 -1 37 7C44 16 39 32 46 41C53 51 78 57 80 67ZM80 467C81 476 63 489 55 497C46 505 37 508 29 512C20 516 12 519 2 520C-7 521 -19 522 -27 518C-35 514 -39 504 -47 495C-55 487 -77 475 -76 467C-74 458 -48 449 -38 443C-28 438 -23 442 -17 434C-10 425 -7 395 2 390C11 386 29 399 37 407C44 416 39 432 46 441C53 451 78 457 80 467ZM480 67C481 76 463 89 455 97C446 105 437 108 429 112C420 116 412 119 402 120C393 121 381 122 373 118C365 114 361 104 353 95C345 87 323 75 324 67C326 58 352 49 362 43C372 38 377 42 383 34C390 25 393 -5 402 -10C411 -14 429 -1 437 7C444 16 439 32 446 41C453 51 478 57 480 67ZM480 467C481 476 463 489 455 497C446 505 437 508 429 512C420 516 412 519 402 520C393 521 381 522 373 518C365 514 361 504 353 495C345 487 323 475 324 467C326 458 352 449 362 443C372 438 377 442 383 434C390 425 393 395 402 390C411 386 429 399 437 407C444 416 439 432 446 441C453 451 478 457 480 467ZM291 275C289 280 277 280 275 287C273 294 284 312 281 317C277 323 263 320 257 319C250 317 245 310 239 308C233 305 224 306 220 302C216 298 215 290 214 284C212 278 212 272 212 265C212 258 208 245 213 241C218 238 233 244 240 244C247 245 248 245 255 243C262 241 276 229 282 231C287 233 286 249 287 256C289 263 293 270 291 275ZM57 112C54 121 47 129 42 134C36 140 28 141 22 145C17 149 13 152 6 158C-1 163 -11 178 -19 178C-26 178 -34 163 -39 156C-43 148 -47 141 -47 133C-48 126 -40 120 -41 112C-43 105 -56 96 -56 87C-57 79 -52 66 -45 61C-38 57 -24 59 -16 61C-7 63 -1 68 5 71C12 75 13 78 22 80C30 82 51 78 57 83C63 88 59 104 57 112ZM457 112C454 121 447 129 442 134C436 140 428 141 422 145C417 149 413 152 406 158C399 163 389 178 381 178C374 178 366 163 361 156C357 148 353 141 353 133C352 126 360 120 359 112C357 105 344 96 344 87C343 79 348 66 355 61C362 57 376 59 384 61C393 63 399 68 405 71C412 75 413 78 422 80C430 82 451 78 457 83C463 88 459 104 457 112Z"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#camo)"/>
+  </svg>
   <div class="wrap">
-    <div class="hero-copy">
-      <span class="eyebrow">● Proudly South African Outfitter</span>
-      <h1>For All Your <span>Hunting</span> &amp; <span>Fishing</span> Needs</h1>
-      <p class="lead">From the bushveld to the water's edge — Shoot &amp; Strike kits you out with the gear, tackle and know-how to make every trip count.</p>
+    <div>
+      <span class="kick">Proudly South African Outfitter</span>
+      <h1>For all your <em>hunting</em> &amp; <em>fishing</em> needs</h1>
+      <p>From the bushveld to the water's edge — the gear, tackle and honest advice to make every trip count.</p>
       <div class="hero-cta">
-        <a class="btn" href="#shop">Explore The Range</a>
-        <a class="btn ghost" href="#visit">Visit The Store</a>
-      </div>
-      <div class="hero-stats">
-        <div><b>Hunting</b><small>Rifles &amp; Gear</small></div>
-        <div><b>Fishing</b><small>Rods &amp; Tackle</small></div>
-        <div><b>Outdoor</b><small>Camp &amp; Camo</small></div>
+        <a class="btn" href="#range">Explore the range</a>
+        <a class="btn ghost" href="#visit">Visit the store</a>
       </div>
     </div>
     <div class="hero-art">
@@ -250,40 +279,24 @@
   </div>
 </section>
 
-<!-- SHOP / CATEGORIES -->
-<section id="shop">
+<!-- RANGE -->
+<section id="range">
   <div class="wrap">
     <div class="section-head">
       <span class="kick">The Range</span>
-      <h2>Everything For Field &amp; Water</h2>
+      <h2>Everything for field &amp; water</h2>
       <p>One store for the hunter and the angler. Walk in for expert advice, walk out kitted for the trip.</p>
     </div>
-    <div class="cats">
-      <div class="cat"><span class="ic">🎯</span><h3>Hunting Rifles</h3><p>Bolt-action, hunting and sport rifles from the brands you trust — matched to your game and terrain.</p></div>
-      <div class="cat"><span class="ic">🔫</span><h3>Ammunition</h3><p>Rimfire to big-bore, plus reloading components. Stocked calibres for the South African bushveld.</p></div>
-      <div class="cat"><span class="ic">🔭</span><h3>Optics &amp; Scopes</h3><p>Riflescopes, binoculars, rangefinders and red dots — fitted and zeroed by our team.</p></div>
-      <div class="cat"><span class="ic">🎣</span><h3>Fishing Tackle</h3><p>Rods, reels, line and terminal tackle for freshwater, saltwater and fly — for the weekend or the record.</p></div>
-      <div class="cat"><span class="ic">🪝</span><h3>Bait &amp; Lures</h3><p>Lures, flies, hooks and baits to match the water. Fresh advice on what's biting.</p></div>
-      <div class="cat"><span class="ic">🥾</span><h3>Camo &amp; Apparel</h3><p>Camo, boots, jackets and field clothing built to take a beating in any season.</p></div>
-      <div class="cat"><span class="ic">🏕️</span><h3>Camping &amp; Outdoor</h3><p>Tents, coolers, lighting and kit to keep you comfortable when the trip runs long.</p></div>
-      <div class="cat"><span class="ic">🔪</span><h3>Knives &amp; Tools</h3><p>Hunting knives, multi-tools and field-dressing gear that hold an edge when it matters.</p></div>
-      <div class="cat"><span class="ic">🧰</span><h3>Accessories</h3><p>Safes, cleaning kits, slings, torches and the odds &amp; ends that finish the setup.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- WHY US -->
-<section id="why" class="features">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="kick">Why Shoot &amp; Strike</span>
-      <h2>Gear You Trust, Advice You Can Use</h2>
-    </div>
-    <div class="feature-grid">
-      <div class="feature"><div class="fic">🦌</div><h3>Hunters &amp; Anglers</h3><p>We're in the field too. Our advice comes from real trips, not a spec sheet.</p></div>
-      <div class="feature"><div class="fic">🇿🇦</div><h3>Local &amp; Licensed</h3><p>A South African store that knows local game, waters, seasons and the paperwork.</p></div>
-      <div class="feature"><div class="fic">✅</div><h3>Quality Brands</h3><p>We stock proven, warrantied gear — nothing that won't earn its place in your kit.</p></div>
-      <div class="feature"><div class="fic">🤝</div><h3>Kitted Out Right</h3><p>From first rifle to first cast, we help you buy once and buy right.</p></div>
+    <div class="grid">
+      <div class="cell"><h3>Hunting Rifles</h3><p>Bolt-action, hunting and sport rifles — matched to your game and terrain.</p></div>
+      <div class="cell"><h3>Ammunition</h3><p>Rimfire to big-bore, plus reloading components. Stocked calibres for the bushveld.</p></div>
+      <div class="cell"><h3>Optics &amp; Scopes</h3><p>Riflescopes, binoculars, rangefinders and red dots — fitted and zeroed by our team.</p></div>
+      <div class="cell"><h3>Fishing Tackle</h3><p>Rods, reels, line and terminal tackle for freshwater, saltwater and fly.</p></div>
+      <div class="cell"><h3>Bait &amp; Lures</h3><p>Lures, flies, hooks and baits to match the water. Fresh advice on what's biting.</p></div>
+      <div class="cell"><h3>Camo &amp; Apparel</h3><p>Camo, boots, jackets and field clothing built to take a beating in any season.</p></div>
+      <div class="cell"><h3>Camping &amp; Outdoor</h3><p>Tents, coolers, lighting and kit to keep you comfortable when the trip runs long.</p></div>
+      <div class="cell"><h3>Knives &amp; Tools</h3><p>Hunting knives, multi-tools and field-dressing gear that hold an edge.</p></div>
+      <div class="cell"><h3>Accessories</h3><p>Safes, cleaning kits, slings, torches and the odds &amp; ends that finish the setup.</p></div>
     </div>
   </div>
 </section>
@@ -292,37 +305,38 @@
 <section id="about">
   <div class="wrap split">
     <div>
-      <span class="kick" style="color:var(--accent);font-weight:700;letter-spacing:2.5px;text-transform:uppercase;font-size:12px">Our Store</span>
-      <h2>Built By People Who Live The Outdoors</h2>
+      <span class="kick">Our Store</span>
+      <h2>Built by people who live the outdoors</h2>
       <p>Shoot &amp; Strike is a South African hunting and fishing outfitter serving hunters, anglers and outdoor families across the country. We started with one idea — a single store that treats the rifle bag and the tackle box with the same respect.</p>
-      <p>Whether you're heading out for plains game at first light or chasing a line at the dam, we'll make sure you're set with the right gear and honest advice.</p>
+      <p>Whether you're heading out for plains game at first light or chasing a line at the dam, we'll make sure you're set with the right gear.</p>
       <ul class="ticks">
         <li>Full hunting &amp; fishing range under one roof</li>
         <li>Hands-on staff who hunt and fish themselves</li>
         <li>Scope fitting, zeroing &amp; gear setup</li>
+        <li>Proven, warrantied brands — nothing that won't earn its place</li>
         <li>Support for first-timers and seasoned hands alike</li>
       </ul>
     </div>
     <div class="panel">
-      <div class="row"><span>Located</span><span>South Africa 🇿🇦</span></div>
+      <div class="row"><span>Located</span><span>South Africa</span></div>
       <div class="row"><span>Departments</span><span>Hunting &amp; Fishing</span></div>
-      <div class="row"><span>Specialty</span><span>Full Outdoor Kit</span></div>
-      <div class="row"><span>In Store</span><span>Expert Advice</span></div>
-      <div class="row"><span>Fitting</span><span>Scopes &amp; Optics</span></div>
-      <div style="margin-top:24px"><a class="btn" href="#visit" style="width:100%;text-align:center">Plan Your Visit</a></div>
+      <div class="row"><span>Specialty</span><span>Full outdoor kit</span></div>
+      <div class="row"><span>In store</span><span>Expert advice</span></div>
+      <div class="row"><span>Fitting</span><span>Scopes &amp; optics</span></div>
+      <div style="margin-top:22px"><a class="btn" href="#visit" style="display:block;text-align:center">Plan your visit</a></div>
     </div>
   </div>
 </section>
 
-<!-- BRANDS -->
-<section id="brands" class="features">
+<!-- STOCK -->
+<section id="stock">
   <div class="wrap">
     <div class="section-head">
       <span class="kick">On Our Shelves</span>
-      <h2>Categories We Stock</h2>
+      <h2>Categories we stock</h2>
       <p>A curated line-up across every department — ask in store about specific brands and current stock.</p>
     </div>
-    <div class="brands">
+    <div class="tags">
       <span>Rifles</span><span>Shotguns</span><span>Air Rifles</span><span>Ammunition</span>
       <span>Reloading</span><span>Riflescopes</span><span>Binoculars</span><span>Rangefinders</span>
       <span>Fishing Rods</span><span>Reels</span><span>Fly Fishing</span><span>Lures &amp; Baits</span>
@@ -332,20 +346,7 @@
   </div>
 </section>
 
-<!-- CTA BAND -->
-<section>
-  <div class="wrap">
-    <div class="band">
-      <div>
-        <h2>Ready For The Next Trip?</h2>
-        <p>Come through and let's get you kitted out — for the hunt, the water, or both.</p>
-      </div>
-      <a class="btn" href="#visit" style="font-size:15px;padding:14px 26px">Get In Touch</a>
-    </div>
-  </div>
-</section>
-
-<!-- VISIT / CONTACT -->
+<!-- VISIT -->
 <section id="visit">
   <div class="wrap">
     <div class="section-head">
@@ -353,13 +354,13 @@
       <h2>Find Shoot &amp; Strike</h2>
       <p>Drop in, call, or message us — we're happy to help you plan your kit before you buy.</p>
     </div>
-    <div class="contact-grid">
-      <div class="cc"><div class="ic">📍</div><h3>Store</h3><p>South Africa<br/>Address coming soon</p></div>
-      <div class="cc"><div class="ic">📞</div><h3>Call / WhatsApp</h3><p><a href="#">Phone number coming soon</a></p></div>
-      <div class="cc"><div class="ic">✉️</div><h3>Email</h3><p><a href="#">Email coming soon</a></p></div>
-      <div class="cc"><div class="ic">🕑</div><h3>Trading Hours</h3><p>Mon – Fri: 08:00 – 17:00<br/>Sat: 08:00 – 13:00</p></div>
-      <div class="cc"><div class="ic">📷</div><h3>Social</h3><p><a href="#">Follow us — links coming soon</a></p></div>
-      <div class="cc"><div class="ic">🎯</div><h3>In Store</h3><p>Scope fitting, gear advice &amp; full hunting + fishing range.</p></div>
+    <div class="grid">
+      <div class="cell cc"><h3>Store</h3><p>South Africa<br/>Address coming soon</p></div>
+      <div class="cell cc"><h3>Call / WhatsApp</h3><p>Phone number coming soon</p></div>
+      <div class="cell cc"><h3>Email</h3><p>Email coming soon</p></div>
+      <div class="cell cc"><h3>Trading Hours</h3><p>Mon – Fri: 08:00 – 17:00<br/>Sat: 08:00 – 13:00</p></div>
+      <div class="cell cc"><h3>Social</h3><p>Links coming soon</p></div>
+      <div class="cell cc"><h3>In Store</h3><p>Scope fitting, gear advice &amp; the full hunting + fishing range.</p></div>
     </div>
     <p class="note">Contact details are being finalised — this page will be updated with the store's address, phone and social links.</p>
   </div>
@@ -369,24 +370,42 @@
   <div class="wrap foot">
     <a class="logo" href="#top">
       <img src="assets/logo.jpg" alt="Shoot and Strike logo" />
-      <span class="brandmark">Shoot &amp; Strike<small>Hunting · Fishing</small></span>
+      <b>Shoot &amp; Strike</b>
     </a>
     <nav>
-      <a href="#shop">Shop</a>
-      <a href="#why">Why Us</a>
+      <a href="#range">Range</a>
       <a href="#about">About</a>
-      <a href="#brands">Brands</a>
+      <a href="#stock">Stock</a>
       <a href="#visit">Visit</a>
     </nav>
-    <small>© <span id="yr"></span> Shoot &amp; Strike · Hunting &amp; Fishing · South Africa 🇿🇦</small>
+    <small>© <span id="yr"></span> Shoot &amp; Strike · Hunting &amp; Fishing · South Africa</small>
   </div>
 </footer>
 
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
-  var t = document.getElementById('toggle'), m = document.getElementById('menu');
-  t.addEventListener('click', function(){ m.classList.toggle('open'); });
-  m.addEventListener('click', function(e){ if(e.target.tagName==='A') m.classList.remove('open'); });
+
+  var menu = document.getElementById('menu'), toggle = document.getElementById('toggle');
+  toggle.addEventListener('click', function(){
+    var open = menu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  menu.addEventListener('click', function(e){
+    if(e.target.tagName === 'A'){ menu.classList.remove('open'); toggle.setAttribute('aria-expanded', false); }
+  });
+
+  var root = document.documentElement;
+  try{
+    var saved = localStorage.getItem('ss-theme');
+    if(saved) root.setAttribute('data-theme', saved);
+  }catch(e){}
+  document.getElementById('theme').addEventListener('click', function(){
+    var set = root.getAttribute('data-theme');
+    var dark = set ? set === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = dark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try{ localStorage.setItem('ss-theme', next); }catch(e){}
+  });
 </script>
 
 </body>
